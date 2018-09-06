@@ -1,0 +1,5 @@
+<users>
+    <user id="1" name="Johnny" age="36"/>
+    <user id="2" name="Rogelio" age="21"/>
+    <user id="3" name="Diane" age="60" />
+</users>
