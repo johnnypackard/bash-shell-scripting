@@ -1,24 +1,27 @@
 #!/usr/bin/env python
 # Years till 100
 import sys
+import optparse
 
-if len(sys.argv) > 1:
-    name = sys.argv[1]
-else:
-    name = raw_input('Enter Name:')
+parser = optparse.OptionParser()
+parser.add_option('-n', '--name', dest='name', help='Your Name')
+parser.add_option('-a', '--age', dest='age', help='Your Age', type=int)
 
-if len(sys.argv) > 2:
-    age = int(sys.argv[2])
-else:
-    age = int(raw_input('Enter Age:'))
+(options, args) = parser.parse_args()
 
-sayHello = 'Hello ' + name + ','
+if options.name is None:
+    options.name = raw_input('Enter Name:')
 
-if age == 100:
+if options.age is None:
+    options.age = int(raw_input('Enter Age:'))
+
+sayHello = 'Hello ' + options.name + ','
+
+if options.age == 100:
     sayAge = 'You are already 100 years old!'
-elif age < 100:
-    sayAge = 'You will be 100 in ' + str(100 - age) + ' years!'
+elif options.age < 100:
+    sayAge = 'You will be 100 in ' + str(100 - options.age) + ' years!'
 else:
-    sayAge = 'You turned 100 ' + str(age - 100) + ' years ago!'
+    sayAge = 'You turned 100 ' + str(options.age - 100) + ' years ago!'
 
 print sayHello, sayAge
